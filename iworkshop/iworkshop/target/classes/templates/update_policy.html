@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Policy Management System</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Policy Management System</h1>
+        <hr>
+        <h2>Update Policy</h2>
+
+        <form action="#" th:action="@{/users/savePolicy}" th:object="${policy}" method="POST">
+
+            <!-- Add hidden form field to handle update -->
+            <input type="hidden" th:field="*{id}" />
+			<input type="hidden" th:field="*{status}" />
+			<p>First Name:</p>
+            <input type="text" th:field="*{firstName}" class="form-control mb-4 col-4">
+			<p>Last Name:</p>
+            <input type="text" th:field="*{lastName}" class="form-control mb-4 col-4">
+			<p>Email Address:</p>
+            <input type="text" th:field="*{email}" class="form-control mb-4 col-4">
+            <p>Annual Income:</p>
+            <input type="number" th:field="*{annualIncome}" placeholder="Annual income" class="form-control mb-4 col-4">
+			<p>Life Covered:</p>
+			<input type="number" th:field="*{lifeCover}" placeholder="Enter Life Covered" class="form-control mb-4 col-4">
+			<p>Mobile Number:</p>
+			<input type="tel" th:field="*{phoneNo}" placeholder="Enter Phone No." class="form-control mb-4 col-4">
+			
+			<label for="gender">Select a Gender: </label>
+            <select name="Select Gender" th:field="*{gender}" th:value=*{gender}>
+			<option value="select">Select</option>
+			  <option value="Male">Male</option>
+			  <option value="Female">Female</option>
+			</select><Br/><Br/>
+			
+			<label for="tobacco">Do you Consume Tobacco ?</label>
+				<select name="Tobacco Consumption" th:field="*{tobacco}">
+			<option value="Not selected">Select</option>
+			  <option value="Yes">Yes</option>
+			  <option value="No">No</option>
+			</select><Br/><Br/>
+			<input type="hidden" th:field="*{policyType}"  class="form-control mb-4 col-4">
+			
+			<!-- <label for="policySelection">Select a Policy: </label>
+			<select name="Policy Selection" th:field="*{policyType}" th:value=*{policyType} required readonly>
+			<option value="Not selected">Select</option>
+			  <option value="Term insurance Policy">Term insurance Policy</option>
+			  <option value="Whole Life insurance Policy">Whole Life insurance Policy</option>
+			  <option value="Money Back policy">Money Back policy</option>
+  			  <option value="Endowment Policy">Endowment Policy</option>		  
+			</select><Br/> -->
+            
+            <p>Enter Date of Birth: </p>
+            <input type="date" th:field="*{dob}" placeholder="Enter Date of Birth" class="form-control mb-4 col-4"> 
+
+			<input type="hidden" th:field="*{premium}"  class="form-control mb-4 col-4">
+
+<label for="paymentMode">Select a Payment Mode: </label>
+			<select name="Payment Mode" th:field="*{paymentMode}">
+			<option value="select">Select</option>
+			  <option value="Annual">Annual</option>
+			  <option value="Half Yearly">Half yearly</option>
+			  <option value="Monthly">Monthly</option>		  
+			</select><Br/>
+			
+			<label for="paymentThrough">Select a Payment Option</label>
+			<select name="Payment Option" th:field="*{paymentThrough}">
+			<option value="select">Select</option>
+			  <option value="UPI">UPI</option>
+			  <option value="Net Banking">Net Banking</option>
+			  <option value="Cash">Cash</option>
+			  	<option value="Cheque">Cheque</option>	  
+			</select><Br/>
+			<!-- <input type="hidden" th:field="*{comprehensiveCare}"  class="form-control mb-4 col-4">
+			<input type="hidden" th:field="*{accidentDeathBenifit}"  class="form-control mb-4 col-4">
+			 -->
+            <button type="submit" class="btn btn-info col-2"> Update Policy</button>
+        </form>
+
+        <hr>
+
+        <a th:href="@{/}"> Back to Policy List</a>
+    </div>
+</body>
+
+</html>

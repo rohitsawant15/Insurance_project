@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Policy Management System</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    </head>
+
+<body>
+    <div class="container">
+        <h1>Welcome to Policy Management System</h1>
+        <hr>	
+        <a th:href="@{/users/addpolicy}"> Back to Policy List</a>
+        <h2>*Enter Policy Details*</h2>
+		
+        <form action="#" th:action="@{/users/savePolicy}" th:object="${policy}" method="POST">
+            <input type="text" th:field="*{firstName}" placeholder="PolicyHolder First Name" class="form-control mb-4 col-4" required>
+
+            <input type="text" th:field="*{lastName}" placeholder="PolicyHolder Last Name" class="form-control mb-4 col-4" required>
+
+            <input type="text" th:field="*{email}" placeholder="PolicyHolder Email" class="form-control mb-4 col-4" required>
+			<input type="number" th:field="*{annualIncome}" placeholder="Annual income" class="form-control mb-4 col-4" required>
+			<input type="number" th:field="*{lifeCover}" placeholder="Enter Life Covered" class="form-control mb-4 col-4" required>
+			<input type="tel" th:field="*{phoneNo}" placeholder="Enter Phone No." class="form-control mb-4 col-4" maxlength="10" required>
+			<input type="hidden" th:field="*{status}" placeholder="Status" class="form-control mb-4 col-4" required>
+			<label for="gender">Select a Gender</label>
+            <select name="Select Gender" th:field="*{gender}" placeholder="select" required>
+			<option value=" Not selected">Not Selected</option> 
+			  <option value="Male">Male</option>
+			  <option value="Female">Female</option>
+			</select><Br/><Br/>
+            
+            <p>Enter Date of Birth</p>
+            <input type="date" th:field="*{dob}" placeholder="Enter Date of Birth" class="form-control mb-4 col-4" required> 
+            <label for="tobacco">Do you Consume Tobacco ?</label>
+
+			<select name="Tobacco Consumption" th:field="*{tobacco}" required>
+			<option value="Not selected">Not Selected</option>
+			  <option value="Yes">Yes</option>
+			  <option value="No">No</option>
+			</select><Br/><Br/>
+			
+			<label for="policySelection">Select a Policy</label>
+			<select name="Policy Selection" th:field="*{policyType}" required>
+			<option value="select">Not Selected</option>
+			  <option value="Term insurance Policy">Term insurance Policy</option>
+			  <option value="Whole Life insurance Policy">Whole Life insurance Policy</option>
+			  <option value="Money Back policy">Money Back policy</option>
+  			  <option value="Endowment Policy">Endowment Policy</option>		  
+			</select><Br/>
+			
+			<label for="paymentMode">Select a Payment Mode</label>
+			<select name="Payment Mode" th:field="*{paymentMode}" required>
+			<option value="select">Not Selected</option>
+			  <option value="Annual">Annual</option>
+			  <option value="Half Yearly">Half yearly</option>
+			  <option value="Monthly">Monthly</option>		  
+			</select><Br/>
+			
+			<label for="paymentThrough">Select a Payment Option</label>
+			<select name="Payment Option" th:field="*{paymentThrough}" required>
+			<option value="select">Not Selected</option>
+			  <option value="UPI">UPI</option>
+			  <option value="Net Banking">Net Banking</option>
+			  <option value="Cash">Cash</option>
+			  <option value="Cheque">Cheque</option>			  
+			</select><Br/>
+			
+            <button type="submit" class="btn btn-info col-2"> Save Policy</button>
+        </form>
+
+        <hr>
+	
+        
+    </div>
+</body>
+
+</html>
